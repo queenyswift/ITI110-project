@@ -51,7 +51,7 @@ page_5= st.Page(
 page =st.navigation(
     {
         "Home": [page_1, page_2, page_3],
-        "Data Visualization": [page_4],
+        "Data Visualization": [page_4,page_5],
     }
 )
 
