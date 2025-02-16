@@ -16,9 +16,6 @@ import easyocr
 #wide means use the entire screen
 st.set_page_config(page_title="Tech-Duo",page_icon="🧬",layout="wide")
 
-
-#logo
-#st.sidebar.image(r"C:\Users\qiqiy\Desktop\NYP\ITI110\tech_logo.png", caption="Text Sentiment Analyze")
     
 # PAGE SETUP
 page_1 = st.Page(
