@@ -19,26 +19,26 @@ st.set_page_config(page_title="Tech-Duo",page_icon="🧬",layout="wide")
     
 # PAGE SETUP
 page_1 = st.Page(
-    page=r"C:\Users\qiqiy\Desktop\NYP\ITI110\enter_text.py",
+    page=r"./enter_text.py",
     title="Enter text",
     icon=":material/add_circle:",
     default=True,
 )
 
 page_2 = st.Page(
-    page=r"C:\Users\qiqiy\Desktop\NYP\ITI110\upload_file.py",
+    page=r"./upload_file.py",
     title="Upload file",
     icon=":material/add_circle:",   
 )
 
 page_3= st.Page(
-    page=r"C:\Users\qiqiy\Desktop\NYP\ITI110\web_analyze.py",
+    page=r"./web_analyze.py",
     title="Web Scraping",
     icon=":material/add_circle:", 
 )
 
 page_4= st.Page(
-    page=r"C:\Users\qiqiy\Desktop\NYP\ITI110\dashboard.py",
+    page=r"./dashboard.py",
     title="Dashboard",
     icon=":material/add_circle:", 
 )
