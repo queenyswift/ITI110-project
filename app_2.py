@@ -1,16 +1,3 @@
-#C:\Users\qiqiy\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\streamlit.exe run app_2.py
-#pip install streamlit beautifulsoup4 requests textblob pandas
-#https://www.webfx.com/tools/emoji-cheat-sheet/
-#https://fonts.google.com/icons?icon.query=text&icon.size=24&icon.color=%23e8eaed&icon.platform=web
-#https://www.geeksforgeeks.org/deploy-a-machine-learning-model-using-streamlit-library/
-#python -m pip install -U matplotlib
-#pip install --upgrade pip
-# For GPU users
-#pip install tensorflow[and-cuda]
-# For CPU users
-#pip install tensorflow
-#https://www.youtube.com/watch?v=JIBsJx7U0Xw to enable longpath. otherwise cannot download tensorflow as the path too long
-
 from textblob import TextBlob
 import pandas as pd
 import streamlit as st
