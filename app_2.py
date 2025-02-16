@@ -43,6 +43,11 @@ page_4= st.Page(
     icon=":material/add_circle:", 
 )
 
+page_5= st.Page(
+    title="testing",
+    icon=":material/add_circle:", 
+)
+
 page =st.navigation(
     {
         "Home": [page_1, page_2, page_3],
