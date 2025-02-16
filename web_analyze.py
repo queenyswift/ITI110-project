@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Load the pre-trained sentiment analysis model (.h5)
-model = load_model(r'C:\Users\qiqiy\Desktop\NYP\ITI110\sentiment_lstm_model.h5')
+model = load_model(r'./sentiment_lstm_model.h5')
 
 # Load tokenizer 
 tokenizer = Tokenizer()
