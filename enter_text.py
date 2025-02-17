@@ -30,6 +30,13 @@ with st.expander('Analyze Text', icon=":material/text_fields:"):
         predicted_class_index = np.argmax(prediction[0])  # Get the index of the highest value
         sentiment = sentiment_classes[predicted_class_index]  # Get the corresponding sentiment label
 
+        # Display sentiment with different colors
+        if sentiment == "Negative":
+            st.markdown(f"<h3 style='color:red-background;'>Sentiment Analysis: {sentiment}</h3>", unsafe_allow_html=True)
+        elif sentiment == "Neutral":
+            st.markdown(f"<h3 style='color:blue-background;'>Sentiment Analysis: {sentiment}</h3>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<h3 style='color:green-background;'>Sentiment Analysis: {sentiment}</h3>", unsafe_allow_html=True)
         
         st.write(f"Sentiment Analysis: {sentiment}")
         # If you want to display additional information such as confidence or probability:
