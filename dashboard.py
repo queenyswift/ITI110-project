@@ -22,8 +22,9 @@ def save_plot_as_image(fig):
 # File uploader for multiple files
 st.header('📊 Sentiment Analysis Dashboard')
 uploaded_files = st.file_uploader(
-    "Upload files to show charts for the result of sentiment analyze, one at a time",
-    type=["csv", "xlsx", "xls"]
+    "Upload one file at a time to show charts for the result of sentiment analyze",
+    type=["csv", "xlsx", "xls"],
+    accept_multiple_files=False
 )
 
 if uploaded_files:
