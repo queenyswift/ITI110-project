@@ -17,7 +17,7 @@ import easyocr
 st.set_page_config(page_title="Tech-Duo",page_icon="🧬",layout="wide")
 
     
-# PAGE SETUP
+# page setup of various pages
 page_1 = st.Page(
     page=r"./enter_text.py",
     title="Enter text",
@@ -43,7 +43,7 @@ page_4= st.Page(
     icon=":material/add_circle:", 
 )
 
-
+#allow the user to navigate the page
 page =st.navigation(
     {
         "Home": [page_1, page_2, page_3],
