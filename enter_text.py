@@ -31,7 +31,3 @@ with st.expander('Analyze Text', icon=":material/text_fields:"):
         sentiment = sentiment_classes[predicted_class_index]  # Get the corresponding sentiment label
         
         st.write(f"Sentiment Analysis: {sentiment}")
-        
-        # If want to display additional information such as confidence or probability:
-        #st.write(f"Prediction Probability: {round(prediction[0][0], 2)}")  # Example for binary output (0 or 1)
-
