@@ -31,7 +31,7 @@ def extract_text_from_url(url):
 def predict_sentiment(text):
     # Preprocess the input text (same steps as during training)
     sequences = tokenizer.texts_to_sequences([text])
-    padded_sequences = pad_sequences(sequences, maxlen=10000)  # Adjust maxlen based on your model's input size
+    padded_sequences = pad_sequences(sequences, maxlen=1000)  # Adjust maxlen based on your model's input size
     
     # Predict sentiment using the loaded model
     prediction = model.predict(padded_sequences)
