@@ -78,15 +78,16 @@ if uploaded_files:
             group_option = st.radio("Group data by:", ("Day", "Month", "Year"))
 
             if group_option == "Day":
-                grouping = filtered_df['date'].dt.date
+                filtered_df['grouping'] = filtered_df['date'].dt.date  # Keep as date
             elif group_option == "Month":
-                grouping = filtered_df['date'].dt.to_period('M').astype(str)
+                filtered_df['grouping'] = filtered_df['date'].dt.to_period('M').astype(str)  # Convert to month string
             elif group_option == "Year":
-                grouping = filtered_df['date'].dt.year.astype(str)
+                filtered_df['grouping'] = filtered_df['date'].dt.year.astype(str)  # Convert to string
+
 
             
             # Group data based on selected option and count occurrences of each sentiment category
-            sentiment_counts = filtered_df.groupby([grouping, 'analysis']).size().stack(fill_value=0)
+            sentiment_counts = filtered_df.groupby(['grouping', 'analysis']).size().unstack(fill_value=0)
 
           # Display sentiment count table
             st.write(f"Sentiment Counts by {group_option}")
