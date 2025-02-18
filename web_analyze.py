@@ -41,7 +41,7 @@ def predict_sentiment(text):
     predicted_class_index = np.argmax(prediction[0])  # Get the index of the highest probability
     sentiment = sentiment_classes[predicted_class_index]  # Get the corresponding sentiment label
     
-    return sentiment, prediction[0]  # Return sentiment and prediction probabilities
+    return sentiment # Return sentiment
 
 # Streamlit UI
 st.header('📝 Sentiment Analysis for Website')
@@ -63,16 +63,15 @@ if url:
             
             # Apply sentiment analysis
             sentiments = []
-            probabilities = []
             for text in extracted_text:
                 sentiment, probability = predict_sentiment(text)
                 sentiments.append(sentiment)
-                #probabilities.append(probability)
+                
             
             # Add sentiment and probabilities to the DataFrame
             df['analysis'] = sentiments
-            #df['probability'] = probabilities
-
+            
+            #add today date to the file with the time to 00:00:00
             df['date'] = pd.to_datetime('today').normalize().strftime('%Y-%m-%d %H:%M:%S') 
             
             # Display results
