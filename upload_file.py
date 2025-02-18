@@ -156,12 +156,12 @@ if uploaded_files:
             df_result = df[[text_column, 'analysis', 'date']]
             st.dataframe(df_result.head(1000)) #take first 1000 rows
 
-            # Download the processed file
+            # Convert to csv format
             @st.cache_data
             def convert_df_to_csv(df):
                 return df.to_csv(index=False).encode('utf-8')
 
-            #maximum six can be download
+            #download the excel file 
             csv_data = convert_df_to_csv(df_result)
             st.download_button(
                 label=f"📥 Download results for {uploaded_file.name}",
