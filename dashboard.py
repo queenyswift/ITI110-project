@@ -70,6 +70,9 @@ if uploaded_files:
             # Filter data based on selected time range
             filtered_df = df[(df['date'] >= pd.to_datetime(start_date)) & (df['date'] <= pd.to_datetime(end_date))]
 
+            #convert the words under analysis column to be in small case
+            filtered_df['analysis'] = filtered_df['analysis'].str.strip().str.lower()
+            
             # Display filtered data 
             st.write(f"Filtered Data from {start_date} to {end_date}")
             st.write(filtered_df)
