@@ -23,7 +23,7 @@ st.header('📊 Dashboard')
 uploaded_files = st.file_uploader(
     "Upload one file to show charts for the result of sentiment analyze",
     type=["csv", "xlsx", "xls"],
-    accept_multiple_files=False
+    accept_multiple_files=True
 )
 
 if uploaded_files:
