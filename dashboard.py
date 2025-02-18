@@ -132,7 +132,7 @@ if uploaded_files:
                 plt.ylabel("Count", fontsize=12, family='Arial',labelpad=10)
                 plt.xlabel("Date", fontsize=12, family='Arial',labelpad=10)
 
-                ax.tick_params(axis='x', labelsize=10, labelrotation=0, width=10)
+                ax.tick_params(axis='x', labelsize=10, labelrotation=90, width=10)
                 ax.tick_params(axis='y', labelsize=10, width=1)                          
                 
                 st.pyplot(fig)
