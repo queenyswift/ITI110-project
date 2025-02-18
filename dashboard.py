@@ -19,7 +19,7 @@ def save_plot_as_image(fig):
     return buf
 
 # File uploader for multiple files
-st.header('📊 Dashboard')
+st.header('📊 Sentiment Analysis Dashboard')
 uploaded_files = st.file_uploader(
     "Upload one file to show charts for the result of sentiment analyze",
     type=["csv", "xlsx", "xls"],
@@ -72,19 +72,34 @@ if uploaded_files:
             st.write(f"Filtered Data from {start_date} to {end_date}")
             st.write(filtered_df)
 
-            # Count occurrences of each sentiment category over time
-            sentiment_counts = filtered_df.groupby([filtered_df['date'].dt.date, 'analysis']).size().unstack(fill_value=0)
+            # Allow the user to choose how to group data
+            group_option = st.radio("Group data by:", ("Day", "Month", "Year"))
 
+            if group_option == "Day":
+                grouping = filtered_df['date'].dt.date
+            elif group_option == "Month":
+                grouping = filtered_df['date'].dt.to_period('M').astype(str)
+            elif group_option == "Year":
+                grouping = filtered_df['date'].dt.year.astype(str)
+
+            
+            # Group data based on selected option and count occurrences of each sentiment category
+            sentiment_counts = filtered_df.groupby([grouping, 'analysis']).size().unstack(fill_value=0)
+
+          # Display sentiment count table
+            st.write(f"Sentiment Counts by {group_option}")
+            st.write(sentiment_counts)
+            
             # Allow user to select which charts to display
             show_line_chart = st.checkbox('Show Line Chart', value=True)
             show_bar_chart = st.checkbox('Show Bar Chart', value=True)
 
             # Generate the Line Chart
             if show_line_chart:
-                st.subheader("Line Chart - Sentiment Counts Over Time")
+                st.subheader("Line Chart - Sentiment Counts Over Time ({group_option})")
                 fig, ax = plt.subplots(figsize=(10, 6))
                 sentiment_counts.plot(ax=ax, kind='line', marker='o')
-                plt.title("Sentiment Counts Over Time", fontsize=16, family='Arial')
+                plt.title("Sentiment Counts by {group_option}", fontsize=16, family='Arial')
                 plt.ylabel("Count", fontsize=12, family='Arial',labelpad=10)
                 plt.xlabel("Date", fontsize=12, family='Arial',labelpad=10)
                 
@@ -104,10 +119,10 @@ if uploaded_files:
 
             # Generate the Bar Chart
             if show_bar_chart:
-                st.subheader("Bar Chart - Sentiment Counts by Date")
+                st.subheader("Bar Chart -Sentiment Counts Over Time ({group_option})")
                 fig, ax = plt.subplots(figsize=(10, 6))
                 sentiment_counts.plot(ax=ax, kind='bar')
-                plt.title("Sentiment Counts by Date", fontsize=16, family='Arial')
+                plt.title("Sentiment Counts by {group_option}", fontsize=16, family='Arial')
                 plt.ylabel("Count", fontsize=12, family='Arial',labelpad=10)
                 plt.xlabel("Date", fontsize=12, family='Arial',labelpad=10)
 
