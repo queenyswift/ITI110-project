@@ -102,10 +102,10 @@ if uploaded_files:
 
             # Generate the Line Chart
             if show_line_chart:
-                st.subheader("Line Chart - Sentiment Counts Over Time ({group_option})")
+                st.subheader("Line Chart - Sentiment Counts Over Time")
                 fig, ax = plt.subplots(figsize=(10, 6))
                 sentiment_counts.plot(ax=ax, kind='line', marker='o')
-                plt.title("Sentiment Counts by {group_option}", fontsize=16, family='Arial')
+                plt.title("Sentiment Counts Over Time", fontsize=16, family='Arial')
                 plt.ylabel("Count", fontsize=12, family='Arial',labelpad=10)
                 plt.xlabel("Date", fontsize=12, family='Arial',labelpad=10)
                 
@@ -125,10 +125,10 @@ if uploaded_files:
 
             # Generate the Bar Chart
             if show_bar_chart:
-                st.subheader("Bar Chart -Sentiment Counts Over Time ({group_option})")
+                st.subheader("Bar Chart -Sentiment Counts Over Time")
                 fig, ax = plt.subplots(figsize=(10, 6))
                 sentiment_counts.plot(ax=ax, kind='bar')
-                plt.title("Sentiment Counts by {group_option}", fontsize=16, family='Arial')
+                plt.title("Sentiment Counts Over Time", fontsize=16, family='Arial')
                 plt.ylabel("Count", fontsize=12, family='Arial',labelpad=10)
                 plt.xlabel("Date", fontsize=12, family='Arial',labelpad=10)
 
