@@ -64,7 +64,7 @@ if url:
             # Apply sentiment analysis
             sentiments = []
             for text in extracted_text:
-                sentiment, probability = predict_sentiment(text)
+                sentiment = predict_sentiment(text)
                 sentiments.append(sentiment)
                 
             
