@@ -58,6 +58,8 @@ if uploaded_files:
                 st.error(f"❌ The file {uploaded_file.name} does not contain a 'date' column for time-based analysis.")
                 continue
 
+            #convert the datetime value into 2024-02-19 00:00:00
+            #If a value cannot be converted to a datetime, it replaces it with NaT (Not a Time, similar to NaN for dates).
             df['date'] = pd.to_datetime(df['date'], errors='coerce')
 
             # Allow the user to select a time range
@@ -84,7 +86,7 @@ if uploaded_files:
 
             
             # Group data based on selected option and count occurrences of each sentiment category
-            sentiment_counts = filtered_df.groupby([grouping, 'analysis']).size().unstack(fill_value=0)
+            sentiment_counts = filtered_df.groupby([grouping, 'analysis']).size().stack(fill_value=0)
 
           # Display sentiment count table
             st.write(f"Sentiment Counts by {group_option}")
