@@ -14,7 +14,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import Tokenizer
 
 # Initialize EasyOCR reader (supports English by default, add languages as needed)
-reader = easyocr.Reader(['en'])  # You can add more languages, e.g., ['en', 'fr', 'de']
+reader = easyocr.Reader(['en'])  # can add more languages, e.g., ['en', 'fr', 'de']
 
 # Load the pre-trained sentiment analysis model (.h5)
 model = load_model(r'./sentiment_lstm_model.h5')
@@ -26,7 +26,7 @@ tokenizer = Tokenizer()
 def predict_sentiment(text):
     # Preprocess the input text (same steps as during training)
     sequences = tokenizer.texts_to_sequences([text])
-    padded_sequences = pad_sequences(sequences, maxlen=1000)  # Adjust maxlen based on your model's input size
+    padded_sequences = pad_sequences(sequences, maxlen=10000)  # Adjust maxlen based on model's input size
     
     # Predict sentiment using the loaded model
     prediction = model.predict(padded_sequences)
@@ -36,7 +36,7 @@ def predict_sentiment(text):
     predicted_class_index = np.argmax(prediction[0])  # Get the index of the highest probability
     sentiment = sentiment_classes[predicted_class_index]  # Get the corresponding sentiment label
     
-    return sentiment, prediction[0]  # Return sentiment and prediction probabilities
+    return sentiment  # Return sentiment
 
 
 # File uploader for multiple files
@@ -138,15 +138,12 @@ if uploaded_files:
 
             # Apply sentiment analysis
             sentiments = []
-            probabilities = []
             for text in df[text_column]:
-                sentiment, probability = predict_sentiment(text)
+                sentiment = predict_sentiment(text)
                 sentiments.append(sentiment)
-                #probabilities.append(probability)
             
             # Add sentiment and probabilities to the DataFrame
             df['analysis'] = sentiments
-            #df['probability'] = probabilities
             
             # Add a column with today's date
             # Add today's date to each row
