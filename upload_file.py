@@ -42,7 +42,7 @@ def predict_sentiment(text):
 # File uploader for multiple files
 st.header('📝 Sentiment Analysis for files upload')
 uploaded_files = st.file_uploader(
-    "Upload multiple files (CSV, Excel, TXT, DOCX, PDF, Images - JPG, PNG)",
+    "Upload multiple files (CSV, Excel, TXT, DOCX, PDF, Images, JPG, PNG)",
     type=["csv", "xlsx", "xls", "txt", "docx", "pdf", "jpg", "jpeg", "png"],
     accept_multiple_files=True
 )
